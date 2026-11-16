@@ -1,0 +1,30 @@
+﻿name: Bug report
+description: Segnala un problema o un comportamento inatteso
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrizione del problema
+      description: Cosa succede?
+      placeholder: Descrivi il bug in modo chiaro
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passi per riprodurre
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento atteso
+  - type: textarea
+    id: environment
+    attributes:
+      label: Ambiente
+      placeholder: OS, versione Python/Node, versione app/commit, ecc.

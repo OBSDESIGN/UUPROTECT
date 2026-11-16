@@ -1,23 +1,26 @@
-﻿[build-system]
+[build-system]
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "uuprotect"
-version = "0.41"
-description = "UUPROTECT - Open source antivirus engine and desktop scanner"
+version = "0.41.0"
+description = "UUPROTECT - Open source antivirus engine and desktop scanner for Windows"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    {name = "UUPROTECT Project"}
+    {name = "OBS DESIGN"},
+    {name = "Omar Ben Sabyh"}
 ]
-keywords = ["antivirus", "malware", "security", "scanner", "virus"]
+keywords = ["antivirus", "antimalware", "malware-scanner", "virus-scanner", "security", "cybersecurity", "windows", "electron", "python", "open-source", "desktop-app", "cli", "zip-scan"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
     "Intended Audience :: Developers",
     "Intended Audience :: Information Technology",
+    "Intended Audience :: End Users/Desktop",
     "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
@@ -64,6 +67,12 @@ docs = [
     "mkdocs-material>=9.5.0",
 ]
 
+[project.urls]
+Homepage = "https://github.com/OBSDESIGN/UUPROTECT"
+Repository = "https://github.com/OBSDESIGN/UUPROTECT"
+Issues = "https://github.com/OBSDESIGN/UUPROTECT/issues"
+Changelog = "https://github.com/OBSDESIGN/UUPROTECT/blob/main/CHANGELOG.md"
+
 [project.scripts]
 k2 = "uuprotect.k2:main"
 k2c = "uuprotect.k2c:main"
@@ -71,8 +80,6 @@ k2d = "uuprotect.k2d:main"
 uuprotect = "uuprotect.k2:main"
 uuprotectc = "uuprotect.k2c:main"
 uuprotectd = "uuprotect.k2d:main"
-
-
 [tool.setuptools]
 include-package-data = true
 package-dir = {"" = "."}

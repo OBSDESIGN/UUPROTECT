@@ -1,32 +1,40 @@
 {
-  "name": "UUPROTECT-ui",
-  "version": "0.1.0",
-  "private": true,
-  "main": "electron/main.cjs",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview",
-    "electron": "electron .",
-    "start": "npm run build && electron ."
-  },
-  "dependencies": {
-    "clsx": "^2.1.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-icons": "^5.7.0",
-    "tailwind-merge": "^2.5.4"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.1",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.4",
-    "autoprefixer": "^10.4.20",
-    "electron": "^33.0.0",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.16",
-    "typescript": "^5.6.3",
-    "vite": "^5.4.11"
-  }
+    "name":  "uuprotect-ui",
+    "version":  "0.41.0",
+    "private":  true,
+    "main":  "electron/main.cjs",
+    "scripts":  {
+                    "dev":  "vite",
+                    "build":  "tsc -b \u0026\u0026 vite build",
+                    "preview":  "vite preview",
+                    "electron":  "electron .",
+                    "start":  "npm run build \u0026\u0026 electron ."
+                },
+    "dependencies":  {
+                         "clsx":  "^2.1.1",
+                         "react":  "^18.3.1",
+                         "react-dom":  "^18.3.1",
+                         "react-icons":  "^5.7.0",
+                         "tailwind-merge":  "^2.5.4"
+                     },
+    "devDependencies":  {
+                            "@types/node":  "^22.10.1",
+                            "@types/react":  "^18.3.12",
+                            "@types/react-dom":  "^18.3.1",
+                            "@vitejs/plugin-react":  "^4.3.4",
+                            "autoprefixer":  "^10.4.20",
+                            "electron":  "^33.0.0",
+                            "postcss":  "^8.4.49",
+                            "tailwindcss":  "^3.4.16",
+                            "typescript":  "^5.6.3",
+                            "vite":  "^5.4.11"
+                        },
+    "description":  "UUPROTECT desktop UI (Electron + React) - OBS DESIGN",
+    "author":  "Omar Ben Sabyh (OBS DESIGN)",
+    "license":  "MIT",
+    "repository":  {
+                       "type":  "git",
+                       "url":  "https://github.com/OBSDESIGN/UUPROTECT.git"
+                   },
+    "homepage":  "https://github.com/OBSDESIGN/UUPROTECT"
 }
