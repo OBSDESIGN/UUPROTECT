@@ -1,0 +1,26 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist-python/
+.eggs/
+.venv/
+venv/
+
+# Node / Electron
+electron-ui/node_modules/
+electron-ui/build*.log
+electron-ui/*.tsbuildinfo
+electron-ui/.vite/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local data / env
+.env
+*.log

@@ -1,0 +1,40 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+  }
+  html, body, #root { height: 100%; }
+  body { @apply bg-background text-foreground; margin: 0; }
+  * { border-color: hsl(var(--border)); }
+}
+
+@layer utilities {
+  .bg-background { background-color: hsl(var(--background)); }
+  .text-foreground { color: hsl(var(--foreground)); }
+  .fill-foreground { fill: hsl(var(--foreground)); }
+  .border-border { border-color: hsl(var(--border)); }
+  .stroke-border { stroke: hsl(var(--border)); }
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+  }
+  100% {
+    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
+  }
+}
+
+.animate-orbit {
+  animation: orbit calc(var(--duration) * 1s) linear infinite;
+}
+
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
