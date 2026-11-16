@@ -109,17 +109,17 @@ Contributions are welcome (bug fixes, UI/engine improvements, documentation, tes
 ## Repository Structure
 ```text
 .
-├─ uuprotect/          # Antivirus engine, plugins, CLI, daemon
-├─ electron-ui/        # Desktop interface (React + Electron)
-├─ Tools/              # Utilities and support tools
-├─ assets/             # Graphic assets (logo, etc.)
-├─ .github/            # Templates and CI workflows
-├─ README.md
-├─ LICENSE
-├─ CONTRIBUTING.md
-├─ SECURITY.md
-├─ CHANGELOG.md
-└─ pyproject.toml
+├── uuprotect/          # Antivirus engine, plugins, CLI, daemon
+├── electron-ui/        # Desktop interface (React + Electron)
+├── Tools/              # Utilities and support tools
+├── assets/             # Graphic assets (logo, etc.)
+├── .github/            # Templates and CI workflows
+├── README.md
+├── LICENSE
+├── CONTRIBUTING.md
+├── SECURITY.md
+├── CHANGELOG.md
+└── pyproject.toml
 ```
 
 ## SEO & Repository Discoverability

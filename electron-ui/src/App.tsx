@@ -73,7 +73,7 @@ function extractExts(text: string): string[] {
 
 type Preset = { id: string; label: string; paths: string[]; note?: string };
 const PRESETS: Preset[] = [
-  { id: "pc", label: "Full PC scan", paths: ["C:\\"], note: "Scan completa del PC (inclusi file ZIP e archivi). Può richiedere molto tempo." },
+  { id: "pc", label: "Full PC scan", paths: ["C:\\"], note: "Full PC scan (including ZIP files and archives). This may take a long time." },
   { id: "user", label: "User folder", paths: ["C:\\Users"], note: "Scan the Users folder (including archives)." },
   { id: "downloads", label: "Downloads", paths: ["C:\\Users"], note: "Scan common user locations (including archives)." },
   { id: "desktop", label: "Desktop", paths: ["C:\\Users"], note: "Scan common user locations (including archives)." },
@@ -256,7 +256,7 @@ export default function App() {
                 <input type="time" className="mt-1 w-full rounded border border-zinc-300 p-2" value={local.autoScanTime} onChange={(e)=>setLocal({...local, autoScanTime:e.target.value})} />
               </div>
               {local.autoScanFrequency === 'weekly' && (
-                <div className="mt-2 text-sm">Giorno
+                <div className="mt-2 text-sm">Day
                   <select className="mt-1 w-full rounded border border-zinc-300 p-2" value={local.autoScanDay ?? 1} onChange={(e)=>setLocal({...local, autoScanDay:Number(e.target.value)})}>
                     <option value={1}>Lunedì</option><option value={2}>Martedì</option><option value={3}>Mercoledì</option><option value={4}>Giovedì</option><option value={5}>Venerdì</option><option value={6}>Saturday</option><option value={0}>Sunday</option>
                   </select>

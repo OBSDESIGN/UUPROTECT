@@ -1,12 +1,12 @@
-﻿# Security Policy
+# Security Policy
 
 ## Supported Versions
 UUPROTECT is under active development. Security fixes are primarily applied to the latest version on the main branch (`main`).
 
 | Version / Branch | Security Support |
 | --- | --- |
-| `main` (latest) | ✅ Supported |
-| Older versions / unmaintained forks | ⚠️ Best effort |
+| `main` (latest) | Supported |
+| Older versions / unmaintained forks | Best effort |
 
 ## Reporting a Vulnerability
 If you discover a security vulnerability:
@@ -14,7 +14,7 @@ If you discover a security vulnerability:
 2. Contact the repository maintainer/owner through available GitHub channels (private reporting if available, or direct maintainer contact).
 3. Include, if possible:
    - description of the issue and impact
-   - steps to reproduce (safe PoC)
+   - steps to reproduce (safe proof of concept)
    - affected version/commit
    - suggested mitigations (if any)
 
