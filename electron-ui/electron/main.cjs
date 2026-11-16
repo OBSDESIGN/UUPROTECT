@@ -86,7 +86,8 @@ function createWindow() {
     title: 'UUPROTECT',
     icon: iconPath,
     autoHideMenuBar: true,
-    backgroundColor: '#000000',
+    backgroundColor: '#FCE044',
+    show: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
       contextIsolation: true,
@@ -94,6 +95,7 @@ function createWindow() {
     },
   });
   win.setMenuBarVisibility(false);
+  win.once('ready-to-show', () => win.show());
   win.loadFile(path.join(__dirname, '..', 'dist', 'index.html'));
 }
 

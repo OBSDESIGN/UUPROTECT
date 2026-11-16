@@ -1,11 +1,11 @@
-[build-system]
+﻿[build-system]
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "uuprotect"
 version = "0.41"
-description = "KICOM Anti-Virus II - Open source antivirus engine for Python"
+description = "UUPROTECT - Open source antivirus engine and desktop scanner"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
@@ -72,11 +72,6 @@ uuprotect = "uuprotect.k2:main"
 uuprotectc = "uuprotect.k2c:main"
 uuprotectd = "uuprotect.k2d:main"
 
-[project.urls]
-Homepage = ""
-Repository = ""
-Documentation = ""
-"Bug Tracker" = ""
 
 [tool.setuptools]
 include-package-data = true
