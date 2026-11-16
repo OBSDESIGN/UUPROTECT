@@ -1,17 +1,17 @@
-﻿## Descrizione
-<!-- Spiega cosa cambia e perché -->
+﻿## Description
+<!-- Explain what changes and why -->
 
-## Tipo di modifica
+## Type of change
 - [ ] Bug fix
-- [ ] Nuova funzionalità
-- [ ] Documentazione
-- [ ] Refactor / manutenzione
-- [ ] Altro
+- [ ] New feature
+- [ ] Documentation
+- [ ] Refactor / maintenance
+- [ ] Other
 
-## Verifiche
-- [ ] Ho testato le modifiche in locale (quando applicabile)
-- [ ] Ho aggiornato la documentazione (se necessario)
-- [ ] La modifica non include segreti o dati sensibili
+## Checks
+- [ ] I tested the changes locally (when applicable)
+- [ ] I updated documentation (if needed)
+- [ ] The change does not include secrets or sensitive data
 
-## Note aggiuntive
-<!-- Screenshot, log, limitazioni, follow-up -->
+## Additional notes
+<!-- Screenshots, logs, limitations, follow-up -->

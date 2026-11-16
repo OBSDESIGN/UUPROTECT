@@ -1,22 +1,22 @@
 ﻿# Code of Conduct
 
-## Il nostro impegno
-Vogliamo mantenere una community aperta, rispettosa e collaborativa per tutti i partecipanti al progetto UUPROTECT.
+## Our Pledge
+We are committed to maintaining an open, respectful, and collaborative community for everyone participating in the UUPROTECT project.
 
-## Comportamenti attesi
-- Essere rispettosi e professionali nelle discussioni tecniche
-- Fornire feedback costruttivo e basato sui fatti
-- Accettare critiche tecniche in modo collaborativo
-- Aiutare a mantenere un ambiente inclusivo e sicuro
+## Expected Behavior
+- Be respectful and professional in technical discussions
+- Provide constructive, fact-based feedback
+- Accept technical criticism collaboratively
+- Help maintain an inclusive and safe environment
 
-## Comportamenti inaccettabili
-- Insulti, molestie, attacchi personali o discriminazioni
-- Linguaggio offensivo o intimidatorio
-- Pubblicazione di informazioni private altrui senza consenso
-- Qualsiasi comportamento che ostacoli in modo grave la collaborazione
+## Unacceptable Behavior
+- Insults, harassment, personal attacks, or discrimination
+- Offensive or intimidating language
+- Publishing others' private information without consent
+- Any behavior that seriously disrupts collaboration
 
-## Applicazione
-I maintainer del progetto possono moderare, modificare o rimuovere contenuti/commenti e limitare la partecipazione in caso di violazioni di questo codice di condotta.
+## Enforcement
+Project maintainers may moderate, edit, or remove content/comments and restrict participation in cases of violations of this Code of Conduct.
 
-## Segnalazioni
-Per segnalare comportamenti non appropriati, utilizza i canali di contatto del repository/maintainer su GitHub.
+## Reporting
+To report inappropriate behavior, use the repository/maintainer contact channels on GitHub.

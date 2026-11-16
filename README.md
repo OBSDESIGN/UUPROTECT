@@ -1,53 +1,53 @@
 ﻿# UUPROTECT
 
 <p align="center">
-  <img src="assets/uuprotect-logo.png" alt="UUPROTECT - Antivirus open source per Windows, desktop e CLI" width="220" />
+  <img src="assets/uuprotect-logo.png" alt="UUPROTECT - Open source antivirus for Windows, desktop and CLI" width="220" />
 </p>
 
 <p align="center">
-  <strong>UUPROTECT</strong> è una soluzione antivirus open source con motore di scansione, interfaccia desktop Electron, CLI e modalità daemon.
+  <strong>UUPROTECT</strong> is an open-source antivirus solution with a scanning engine, Electron desktop interface, CLI, and daemon mode.
 </p>
 
 <p align="center">
   <a href="https://github.com/OBSDESIGN/UUPROTECT/blob/main/LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-20BBA3.svg"></a>
   <a href="https://github.com/OBSDESIGN/UUPROTECT"><img alt="Platform: Windows" src="https://img.shields.io/badge/platform-Windows%20%7C%20Python%20%7C%20Electron-FCE044.svg"></a>
-  <a href="https://github.com/OBSDESIGN/UUPROTECT/releases"><img alt="Release" src="https://img.shields.io/badge/status-active%20development-111827.svg"></a>
+  <a href="https://github.com/OBSDESIGN/UUPROTECT/releases"><img alt="Status" src="https://img.shields.io/badge/status-active%20development-111827.svg"></a>
 </p>
 
-## Autore e crediti
-- **Progetto:** UUPROTECT
-- **Creatore:** **Omar Ben Sabyh**
-- **Licenza e titolarità:** **OBS DESIGN**
-- **Instagram:** se vuoi seguirmi, mi trovi su Instagram come [@omar_ammor78](https://www.instagram.com/omar_ammor78/)
+## Author & Credits
+- **Project:** UUPROTECT
+- **Creator:** **Omar Ben Sabyh**
+- **License & Ownership:** **OBS DESIGN**
+- **Instagram:** If you'd like to follow me, find me on Instagram at [@omar_ammor78](https://www.instagram.com/omar_ammor78/)
 
-## Panoramica
-UUPROTECT è un progetto di sicurezza informatica che combina un **engine antivirus in Python**, strumenti da **riga di comando** e un'**interfaccia grafica desktop** per eseguire scansioni su file, cartelle e archivi (inclusi ZIP e altri formati supportati), con riepilogo risultati, storico, impostazioni e scansioni automatiche pianificate.
+## Overview
+UUPROTECT is a cybersecurity project that combines a **Python antivirus engine**, **command-line tools**, and a **desktop graphical interface** to scan files, folders, and archives (including ZIP and other supported formats), with result summaries, history, settings, and scheduled automatic scans.
 
-Parole chiave: antivirus open source, malware scanner, virus scanner, desktop antivirus, Electron app, Python antivirus engine, scansione archivi ZIP, sicurezza Windows, CLI antivirus, daemon antivirus.
+Keywords: open source antivirus, malware scanner, virus scanner, desktop antivirus, Electron app, Python antivirus engine, ZIP archive scanning, Windows security, CLI antivirus, antivirus daemon.
 
-## Funzionalità principali
-- **Scansione completa:** file, cartelle e archivi (inclusi ZIP e altri formati supportati)
-- **Scansioni predefinite:** PC completo, cartella utente e altre destinazioni rapide
-- **Drag & drop:** trascina file/cartelle nell'interfaccia per avviare l'analisi
-- **Interfaccia desktop:** UI Electron con avanzamento, stato attività, indicatori e riepilogo
-- **Storico e impostazioni:** salvataggio locale di configurazioni e risultati
-- **Scansioni automatiche:** pianificazione tramite attività pianificata di Windows
-- **Risoluzione problemi:** tentativo di disinfezione/rimedio quando supportato dal motore
-- **CLI e daemon:** utilizzo da terminale (`uuprotect`, `k2`) e componenti client/server (`uuprotectc/k2c`, `uuprotectd/k2d`)
+## Key Features
+- **Comprehensive scanning:** files, folders, and archives (including ZIP and other supported formats)
+- **Preset scans:** full PC, user folder, and other quick targets
+- **Drag & drop:** drag files/folders into the interface to start analysis
+- **Desktop interface:** Electron UI with progress, activity status, indicators, and summaries
+- **History & settings:** local storage of configurations and scan results
+- **Automatic scans:** scheduling via Windows Task Scheduler
+- **Issue remediation:** disinfection/remediation attempts when supported by the engine
+- **CLI & daemon:** terminal usage (`uuprotect`, `k2`) and client/server components (`uuprotectc/k2c`, `uuprotectd/k2d`)
 
-## Componenti del progetto
-- **`uuprotect/`**: motore di scansione, plugin, core, CLI e daemon
-- **`electron-ui/`**: applicazione desktop (React, Vite, Electron, TypeScript, Tailwind)
-- **`Tools/`**: utility per firme/regole e strumenti di supporto
-- **Script di avvio:** `Avvia UUPROTECT.bat`, `Avvia-UUPROTECT.bat`
+## Project Components
+- **`uuprotect/`**: scanning engine, plugins, core, CLI, and daemon
+- **`electron-ui/`**: desktop application (React, Vite, Electron, TypeScript, Tailwind)
+- **`Tools/`**: utilities for signatures/rules and support tools
+- **Launch scripts:** `Avvia UUPROTECT.bat`, `Avvia-UUPROTECT.bat`
 
-## Requisiti
-- **Windows** (supporto principale per UI e pianificazione automatica)
+## Requirements
+- **Windows** (primary support for UI and automatic scheduling)
 - **Python 3.10+**
-- **Node.js + npm** (per sviluppo/build dell'interfaccia Electron)
-- Dipendenze Python indicate in `pyproject.toml` (alcune funzionalità opzionali richiedono extra)
+- **Node.js + npm** (for Electron UI development/build)
+- Python dependencies listed in `pyproject.toml` (some optional features require extras)
 
-## Installazione rapida (motore e CLI)
+## Quick Start (Engine & CLI)
 ```bash
 git clone https://github.com/OBSDESIGN/UUPROTECT.git
 cd UUPROTECT
@@ -57,63 +57,63 @@ python -m venv .venv
 pip install -e .
 ```
 
-Installazione con supporto daemon:
+Install with daemon support:
 ```bash
 pip install -e .[daemon]
 ```
 
-Installazione per sviluppo (test/lint/tooling):
+Install for development (tests/lint/tooling):
 ```bash
 pip install -e .[dev]
 ```
 
-## Avvio
-### Interfaccia grafica (Windows)
-- Doppio clic su `Avvia UUPROTECT.bat`
-- Oppure avvia `\.venv\Scripts\uuprotect.exe` (alias: `k2.exe`)
+## Usage
+### Desktop UI (Windows)
+- Double-click `Avvia UUPROTECT.bat`
+- Or run `\.venv\Scripts\uuprotect.exe` (alias: `k2.exe`)
 
 ### CLI
 ```bash
-# Scansione base
-.\.venv\Scripts\uuprotect.exe --no-gui <percorso>
+# Basic scan
+.\.venv\Scripts\uuprotect.exe --no-gui <path>
 
-# Alias compatibili
-.\.venv\Scripts\k2.exe --no-gui <percorso>
+# Compatible aliases
+.\.venv\Scripts\k2.exe --no-gui <path>
 ```
 
-## Sviluppo interfaccia desktop (Electron UI)
+## Desktop UI Development (Electron)
 ```bash
 cd electron-ui
 npm install
 npm run build
 npm run electron
 ```
-Per sviluppo con Vite:
+For development with Vite:
 ```bash
 npm run dev
 ```
 
-## Configurazione
-- Le variabili d'ambiente e i percorsi/regole possono essere configurati tramite `.env` (vedi `.env.example`).
-- L'app desktop salva impostazioni e storico in una directory dati utente locale (Electron `userData`).
-- Le scansioni automatiche pianificate su Windows possono richiedere permessi adeguati per creare/aggiornare attività pianificate.
+## Configuration
+- Environment variables and rule/paths can be configured via `.env` (see `.env.example`).
+- The desktop app stores settings and history in a local user data directory (Electron `userData`).
+- Scheduled automatic scans on Windows may require appropriate permissions to create/update scheduled tasks.
 
-## Sicurezza e responsabilità
-UUPROTECT è fornito come software open source per scopi di analisi e protezione, **senza garanzie** di rilevamento completo o assenza di falsi positivi/negativi. Prima di azioni di disinfezione o rimozione, si consiglia di verificare i risultati e mantenere backup dei dati importanti.
+## Security & Disclaimer
+UUPROTECT is provided as open-source software for analysis and protection purposes, **without warranties** of complete detection or absence of false positives/negatives. Before disinfection or removal actions, verify results and keep backups of important data.
 
-Per segnalazioni di vulnerabilità o problemi di sicurezza, consulta [SECURITY.md](SECURITY.md).
+For vulnerability reports or security issues, see [SECURITY.md](SECURITY.md).
 
-## Contribuire
-I contributi sono benvenuti (bug fix, miglioramenti UI/engine, documentazione, test). Leggi [CONTRIBUTING.md](CONTRIBUTING.md) per linee guida su issue, branch, commit e pull request.
+## Contributing
+Contributions are welcome (bug fixes, UI/engine improvements, documentation, tests). See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on issues, branches, commits, and pull requests.
 
-## Struttura repository (dettaglio)
+## Repository Structure
 ```text
 .
-├─ uuprotect/          # Motore antivirus, plugin, CLI, daemon
-├─ electron-ui/        # Interfaccia desktop (React + Electron)
-├─ Tools/              # Utility e strumenti di supporto
-├─ assets/             # Risorse grafiche (logo, ecc.)
-├─ .github/            # Template e workflow CI
+├─ uuprotect/          # Antivirus engine, plugins, CLI, daemon
+├─ electron-ui/        # Desktop interface (React + Electron)
+├─ Tools/              # Utilities and support tools
+├─ assets/             # Graphic assets (logo, etc.)
+├─ .github/            # Templates and CI workflows
 ├─ README.md
 ├─ LICENSE
 ├─ CONTRIBUTING.md
@@ -122,11 +122,11 @@ I contributi sono benvenuti (bug fix, miglioramenti UI/engine, documentazione, t
 └─ pyproject.toml
 ```
 
-## SEO e indicizzazione del repository
-Questo repository è ottimizzato per la ricerca con descrizione chiara, parole chiave tematiche (antivirus, malware scanner, open source security, Python, Electron, Windows), documentazione strutturata e file standard della community. Per migliorare ulteriormente la visibilità su GitHub:
-- impostare **About/Description** e **Topics** del repository (es. `antivirus`, `malware-scanner`, `security`, `python`, `electron`, `windows`, `open-source`, `cybersecurity`)
-- pubblicare release con note e asset
-- mantenere README, changelog e issue template aggiornati
+## SEO & Repository Discoverability
+This repository is optimized for discoverability with clear descriptions, relevant keywords (antivirus, malware scanner, open source security, Python, Electron, Windows), structured documentation, and standard community files. To further improve visibility on GitHub:
+- set **About/Description** and **Topics** for the repository (e.g. `antivirus`, `malware-scanner`, `security`, `python`, `electron`, `windows`, `open-source`, `cybersecurity`)
+- publish releases with notes and assets
+- keep README, changelog, and issue templates up to date
 
-## Licenza
-Questo progetto è distribuito sotto licenza **MIT** intestata a **OBS DESIGN**. Vedi il file [LICENSE](LICENSE) per il testo completo.
+## License
+This project is distributed under the **MIT License** owned by **OBS DESIGN**. See the [LICENSE](LICENSE) file for the full text.

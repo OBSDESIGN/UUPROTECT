@@ -32,28 +32,28 @@ type OrbitIcon = { Icon: ComponentType<{ className?: string }>; name?: string };
 
 function iconForExt(ext: string): OrbitIcon {
   const e = String(ext || "").toLowerCase();
-  if (["jpg","jpeg","png","gif","bmp","webp","svg","ico","tif","tiff"].includes(e)) return { Icon: FaFileImage, name: "Immagine" };
+  if (["jpg","jpeg","png","gif","bmp","webp","svg","ico","tif","tiff"].includes(e)) return { Icon: FaFileImage, name: "Image" };
   if (["pdf"].includes(e)) return { Icon: FaFilePdf, name: "PDF" };
-  if (["doc","docx","rtf","odt"].includes(e)) return { Icon: FaFileWord, name: "Documento" };
-  if (["xls","xlsx","csv","ods"].includes(e)) return { Icon: FaFileExcel, name: "Foglio" };
-  if (["ppt","pptx","odp"].includes(e)) return { Icon: FaFilePowerpoint, name: "Presentazione" };
-  if (["zip","rar","7z","tar","gz","bz2","xz","cab","iso"].includes(e)) return { Icon: FaFileArchive, name: "Archivio" };
+  if (["doc","docx","rtf","odt"].includes(e)) return { Icon: FaFileWord, name: "Document" };
+  if (["xls","xlsx","csv","ods"].includes(e)) return { Icon: FaFileExcel, name: "Spreadsheet" };
+  if (["ppt","pptx","odp"].includes(e)) return { Icon: FaFilePowerpoint, name: "Presentation" };
+  if (["zip","rar","7z","tar","gz","bz2","xz","cab","iso"].includes(e)) return { Icon: FaFileArchive, name: "Archive" };
   if (["mp3","wav","flac","aac","ogg","m4a"].includes(e)) return { Icon: FaFileAudio, name: "Audio" };
   if (["mp4","avi","mkv","mov","wmv","webm"].includes(e)) return { Icon: FaFileVideo, name: "Video" };
-  if (["js","jsx","ts","tsx"].includes(e)) return { Icon: SiJavascript, name: "Codice JS/TS" };
+  if (["js","jsx","ts","tsx"].includes(e)) return { Icon: SiJavascript, name: "JS/TS Code" };
   if (["py"].includes(e)) return { Icon: SiPython, name: "Python" };
   if (["html","htm"].includes(e)) return { Icon: SiHtml5, name: "HTML" };
   if (["css","scss"].includes(e)) return { Icon: SiCss, name: "CSS" };
   if (["json"].includes(e)) return { Icon: SiJson, name: "JSON" };
-  if (["c","cpp","h","cs","java","go","rs","php","rb","sh","ps1","bat","cmd","sql","xml","yml","yaml","md"].includes(e)) return { Icon: FaFileCode, name: "Codice" };
-  if (["txt","log","ini","cfg","conf"].includes(e)) return { Icon: FaFileAlt, name: "Testo" };
+  if (["c","cpp","h","cs","java","go","rs","php","rb","sh","ps1","bat","cmd","sql","xml","yml","yaml","md"].includes(e)) return { Icon: FaFileCode, name: "Code" };
+  if (["txt","log","ini","cfg","conf"].includes(e)) return { Icon: FaFileAlt, name: "Text" };
   return { Icon: FaFile, name: ext ? ext.toUpperCase() : "File" };
 }
 
 const DEFAULT_FILE_ICONS: OrbitIcon[] = [
-  { Icon: FaFile, name: "File" }, { Icon: FaFileCode, name: "Codice" }, { Icon: FaFileImage, name: "Immagine" },
-  { Icon: FaFilePdf, name: "PDF" }, { Icon: FaFileArchive, name: "Archivio" }, { Icon: FaFileWord, name: "Documento" },
-  { Icon: FaFileAlt, name: "Testo" }, { Icon: FaFileAudio, name: "Audio" }, { Icon: FaFileVideo, name: "Video" },
+  { Icon: FaFile, name: "File" }, { Icon: FaFileCode, name: "Code" }, { Icon: FaFileImage, name: "Image" },
+  { Icon: FaFilePdf, name: "PDF" }, { Icon: FaFileArchive, name: "Archive" }, { Icon: FaFileWord, name: "Document" },
+  { Icon: FaFileAlt, name: "Text" }, { Icon: FaFileAudio, name: "Audio" }, { Icon: FaFileVideo, name: "Video" },
 ];
 
 function extractExts(text: string): string[] {
@@ -73,10 +73,10 @@ function extractExts(text: string): string[] {
 
 type Preset = { id: string; label: string; paths: string[]; note?: string };
 const PRESETS: Preset[] = [
-  { id: "pc", label: "Scansione PC completo", paths: ["C:\\"], note: "Scansione completa del PC (inclusi file ZIP e archivi). Può richiedere molto tempo." },
-  { id: "user", label: "Cartella utente", paths: ["C:\\Users"], note: "Scansione della cartella utenti (inclusi archivi)." },
-  { id: "downloads", label: "Download", paths: ["C:\\Users\\39388\\Downloads"], note: "Scansione cartella Download (inclusi archivi)." },
-  { id: "desktop", label: "Desktop", paths: ["C:\\Users\\39388\\Desktop"], note: "Scansione Desktop (inclusi archivi)." },
+  { id: "pc", label: "Full PC scan", paths: ["C:\\"], note: "Scan completa del PC (inclusi file ZIP e archivi). Può richiedere molto tempo." },
+  { id: "user", label: "User folder", paths: ["C:\\Users"], note: "Scan the Users folder (including archives)." },
+  { id: "downloads", label: "Downloads", paths: ["C:\\Users"], note: "Scan common user locations (including archives)." },
+  { id: "desktop", label: "Desktop", paths: ["C:\\Users"], note: "Scan common user locations (including archives)." },
 ];
 
 function parseSummary(text: string): Summary | null {
@@ -109,8 +109,8 @@ export default function App() {
   const [view, setView] = useState<'scan'|'history'|'settings'>('scan');
   const [scanPaths, setScanPaths] = useState<string[]>(["C:\\Users\\39388\\Desktop"]);
   const [running, setRunning] = useState(false);
-  const [status, setStatus] = useState("Pronto");
-  const [output, setOutput] = useState("Benvenuto in UUPROTECT.\nScegli una scansione predefinita o trascina file/cartelle sul cerchio centrale, poi premi Avvia.");
+  const [status, setStatus] = useState("Ready");
+  const [output, setOutput] = useState("Welcome to UUPROTECT.\nChoose a preset scan or drag files/folders onto the center circle, then press Start.");
   const [dragOver, setDragOver] = useState(false);
   const [progress, setProgress] = useState(0);
   const [statusText, setStatusText] = useState(SCAN_STATUS_MESSAGES[0]);
@@ -168,14 +168,14 @@ export default function App() {
       updateIconsFromText(finalText);
       const parsed = parseSummary(finalText);
       if (parsed) setSummary(parsed);
-      const st = code === 0 ? "Completata" : `Terminata (exit ${code})`;
+      const st = code === 0 ? "Completed" : `Finished (exit ${code})`;
       setStatus(st);
       await persistHistory({ targets: finalPaths, status: st, type, summary: parsed || null, outputTail: finalText.slice(-2000) });
     };
     if (!window.uuprotect?.startScan || !window.uuprotect?.onScanEvent) {
       void (async () => {
         if (!window.uuprotect?.runK2) return;
-        setRunning(true); setProgress(10); setStatus("Operazione in corso..."); setSummary(null);
+        setRunning(true); setProgress(10); setStatus("Operation in progress..."); setSummary(null);
         setOutput(`${intro}\nTarget:\n${finalPaths.map((p)=>`- ${p}`).join("\n")}\n\n`);
         const res = await window.uuprotect.runK2([...finalPaths, ...extraArgs]);
         const text = (res.stdout || "") + (res.stderr ? "\n[stderr]\n" + res.stderr : "");
@@ -184,7 +184,7 @@ export default function App() {
       })();
       return;
     }
-    setRunning(true); setProgress(2); setSummary(null); msgIndexRef.current = 0; setStatusText(SCAN_STATUS_MESSAGES[0]); setStatus("Operazione in corso...");
+    setRunning(true); setProgress(2); setSummary(null); msgIndexRef.current = 0; setStatusText(SCAN_STATUS_MESSAGES[0]); setStatus("Operation in progress...");
     outputRef.current = `${intro}\nTarget:\n${finalPaths.map((p) => `- ${p}`).join("\n")}\n\n`; setOutput(outputRef.current);
     const off = window.uuprotect.onScanEvent((ev) => {
       if (ev.type === 'stdout' || ev.type === 'stderr') {
@@ -202,13 +202,13 @@ export default function App() {
     window.uuprotect.startScan([...finalPaths, ...extraArgs]);
   }
 
-  function runScan(paths: string[]) { runScanWithArgs(paths, ["-r", "-I"], "Avvio scansione completa (inclusi archivi ZIP e altri)...", "scan"); }
+  function runScan(paths: string[]) { runScanWithArgs(paths, ["-r", "-I"], "Starting full scan (including ZIP and other archives)...", "scan"); }
   function startScan() { runScan(targets); }
-  function confirmFix() { setShowFixModal(false); runScanWithArgs(targets, ["-r", "-d", "-I"], "Avvio procedura di risoluzione problemi (disinfezione, inclusi archivi)...", "fix"); }
+  function confirmFix() { setShowFixModal(false); runScanWithArgs(targets, ["-r", "-d", "-I"], "Starting issue remediation procedure (disinfection, including archives)...", "fix"); }
 
   function applyPreset(preset: Preset) {
     setScanPaths(preset.paths); setStatus(`Preset: ${preset.label}`);
-    if (preset.note) setOutput(`${preset.label}\n${preset.note}\n\nPremi il pulsante centrale per avviare.`);
+    if (preset.note) setOutput(`${preset.label}\n${preset.note}\n\nPress the center button to start.`);
   }
   function onDragOver(e: DragEvent<HTMLDivElement>) { e.preventDefault(); e.stopPropagation(); setDragOver(true); }
   function onDragLeave(e: DragEvent<HTMLDivElement>) { e.preventDefault(); e.stopPropagation(); setDragOver(false); }
@@ -217,8 +217,8 @@ export default function App() {
     const files = Array.from(e.dataTransfer.files || []);
     const paths = files.map((f: any) => f.path).filter((p: string) => !!p);
     if (paths.length) {
-      setScanPaths(paths); setIconsFromPaths(paths); setStatus(`${paths.length} elemento/i importato/i`);
-      setOutput(`Elementi pronti per la scansione:\n${paths.map((p) => `- ${p}`).join("\n")}\n\nPremi il pulsante centrale per avviare.`);
+      setScanPaths(paths); setIconsFromPaths(paths); setStatus(`${paths.length} item(s) imported`);
+      setOutput(`Items ready for scanning:\n${paths.map((p) => `- ${p}`).join("\n")}\n\nPress the center button to start.`);
     }
   }
 
@@ -241,38 +241,38 @@ export default function App() {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
         <div className="w-full max-w-2xl rounded-2xl border border-zinc-200 bg-white p-6 text-zinc-900 shadow-2xl">
-          <h2 className="text-xl font-semibold">Configurazione iniziale di UUPROTECT</h2>
-          <p className="mt-1 text-sm text-zinc-600">Primo accesso: configura il sistema e le scansioni automatiche sul PC completo (inclusi file ZIP e archivi).</p>
+          <h2 className="text-xl font-semibold">UUPROTECT Initial Setup</h2>
+          <p className="mt-1 text-sm text-zinc-600">First run: configure the system and automatic scans for the full PC (including ZIP files and archives).</p>
           <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
             <div className="rounded-xl border border-zinc-200 p-3">
-              <div className="font-medium">Scansioni automatiche</div>
-              <label className="mt-2 flex items-center gap-2 text-sm"><input type="checkbox" checked={local.autoScanEnabled} onChange={(e)=>setLocal({...local, autoScanEnabled:e.target.checked})} /> Abilita scansioni automatiche</label>
-              <div className="mt-2 text-sm">Frequenza
+              <div className="font-medium">Automatic scans</div>
+              <label className="mt-2 flex items-center gap-2 text-sm"><input type="checkbox" checked={local.autoScanEnabled} onChange={(e)=>setLocal({...local, autoScanEnabled:e.target.checked})} /> Enable automatic scans</label>
+              <div className="mt-2 text-sm">Frequency
                 <select className="mt-1 w-full rounded border border-zinc-300 p-2" value={local.autoScanFrequency} onChange={(e)=>setLocal({...local, autoScanFrequency:e.target.value as any})}>
-                  <option value="daily">Giornaliera</option><option value="weekly">Settimanale</option>
+                  <option value="daily">Daily</option><option value="weekly">Weekly</option>
                 </select>
               </div>
-              <div className="mt-2 text-sm">Ora
+              <div className="mt-2 text-sm">Time
                 <input type="time" className="mt-1 w-full rounded border border-zinc-300 p-2" value={local.autoScanTime} onChange={(e)=>setLocal({...local, autoScanTime:e.target.value})} />
               </div>
               {local.autoScanFrequency === 'weekly' && (
                 <div className="mt-2 text-sm">Giorno
                   <select className="mt-1 w-full rounded border border-zinc-300 p-2" value={local.autoScanDay ?? 1} onChange={(e)=>setLocal({...local, autoScanDay:Number(e.target.value)})}>
-                    <option value={1}>Lunedì</option><option value={2}>Martedì</option><option value={3}>Mercoledì</option><option value={4}>Giovedì</option><option value={5}>Venerdì</option><option value={6}>Sabato</option><option value={0}>Domenica</option>
+                    <option value={1}>Lunedì</option><option value={2}>Martedì</option><option value={3}>Mercoledì</option><option value={4}>Giovedì</option><option value={5}>Venerdì</option><option value={6}>Saturday</option><option value={0}>Sunday</option>
                   </select>
                 </div>
               )}
             </div>
             <div className="rounded-xl border border-zinc-200 p-3">
-              <div className="font-medium">Target scansione automatica</div>
-              <p className="mt-1 text-xs text-zinc-500">Un percorso per riga</p>
+              <div className="font-medium">Automatic scan targets</div>
+              <p className="mt-1 text-xs text-zinc-500">One path per line</p>
               <textarea className="mt-2 h-36 w-full rounded border border-zinc-300 p-2 text-sm" value={local.autoScanTargets.join("\n")} onChange={(e)=>setLocal({...local, autoScanTargets:e.target.value.split(/\n|;/).map(s=>s.trim()).filter(Boolean)})} />
               <div className="mt-2 text-xs text-zinc-500">Se abilitate, verrà creata/aggiornata un’attività pianificata di Windows per eseguire UUPROTECT in background sul PC completo, inclusi file ZIP e archivi.</div>
             </div>
           </div>
           <div className="mt-5 flex justify-end gap-2">
-            <button className="rounded-lg border border-zinc-300 px-4 py-2 text-sm hover:bg-zinc-100" onClick={()=>saveAppSettings({ firstRunCompleted: true }, true)}>Salta per ora</button>
-            <button disabled={savingSettings} className="rounded-lg bg-[#20BBA3] px-4 py-2 text-sm font-medium text-black hover:bg-[#1aa892] disabled:opacity-60" onClick={()=>saveAppSettings(local, true)}>Salva configurazione</button>
+            <button className="rounded-lg border border-zinc-300 px-4 py-2 text-sm hover:bg-zinc-100" onClick={()=>saveAppSettings({ firstRunCompleted: true }, true)}>Skip for now</button>
+            <button disabled={savingSettings} className="rounded-lg bg-[#20BBA3] px-4 py-2 text-sm font-medium text-black hover:bg-[#1aa892] disabled:opacity-60" onClick={()=>saveAppSettings(local, true)}>Save setup</button>
           </div>
         </div>
       </div>
@@ -284,17 +284,17 @@ export default function App() {
     useEffect(()=>setLocal(settings), [settings]);
     return (
       <div className="h-full overflow-hidden flex flex-col">
-        <h2 className="text-lg font-semibold">Impostazioni</h2>
-        <p className="text-sm text-zinc-600">Configurazione sistema e scansioni automatiche.</p>
+        <h2 className="text-lg font-semibold">Settings</h2>
+        <p className="text-sm text-zinc-600">System configuration and automatic scans.</p>
         <div className="mt-3 space-y-3 overflow-hidden">
-          <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={local.autoScanEnabled} onChange={(e)=>setLocal({...local, autoScanEnabled:e.target.checked})} /> Abilita scansioni automatiche in background</label>
+          <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={local.autoScanEnabled} onChange={(e)=>setLocal({...local, autoScanEnabled:e.target.checked})} /> Enable automatic scans in background</label>
           <div className="grid grid-cols-2 gap-2">
-            <div className="text-sm">Frequenza<select className="mt-1 w-full rounded border border-zinc-300 p-2" value={local.autoScanFrequency} onChange={(e)=>setLocal({...local, autoScanFrequency:e.target.value as any})}><option value="daily">Giornaliera</option><option value="weekly">Settimanale</option></select></div>
-            <div className="text-sm">Ora<input type="time" className="mt-1 w-full rounded border border-zinc-300 p-2" value={local.autoScanTime} onChange={(e)=>setLocal({...local, autoScanTime:e.target.value})} /></div>
+            <div className="text-sm">Frequency<select className="mt-1 w-full rounded border border-zinc-300 p-2" value={local.autoScanFrequency} onChange={(e)=>setLocal({...local, autoScanFrequency:e.target.value as any})}><option value="daily">Daily</option><option value="weekly">Weekly</option></select></div>
+            <div className="text-sm">Time<input type="time" className="mt-1 w-full rounded border border-zinc-300 p-2" value={local.autoScanTime} onChange={(e)=>setLocal({...local, autoScanTime:e.target.value})} /></div>
           </div>
-          {local.autoScanFrequency === 'weekly' && (<div className="text-sm">Giorno<select className="mt-1 w-full rounded border border-zinc-300 p-2" value={local.autoScanDay ?? 1} onChange={(e)=>setLocal({...local, autoScanDay:Number(e.target.value)})}><option value={1}>Lunedì</option><option value={2}>Martedì</option><option value={3}>Mercoledì</option><option value={4}>Giovedì</option><option value={5}>Venerdì</option><option value={6}>Sabato</option><option value={0}>Domenica</option></select></div>)}
-          <div className="text-sm">Target automatici (uno per riga)<textarea className="mt-1 h-28 w-full rounded border border-zinc-300 p-2" value={(local.autoScanTargets||[]).join("\n")} onChange={(e)=>setLocal({...local, autoScanTargets:e.target.value.split(/\n|;/).map(s=>s.trim()).filter(Boolean)})} /></div>
-          <button disabled={savingSettings} className="rounded-lg bg-[#20BBA3] px-4 py-2 text-sm font-medium text-black hover:bg-[#1aa892] disabled:opacity-60" onClick={()=>saveAppSettings(local)}>Salva impostazioni</button>
+          {local.autoScanFrequency === 'weekly' && (<div className="text-sm">Day<select className="mt-1 w-full rounded border border-zinc-300 p-2" value={local.autoScanDay ?? 1} onChange={(e)=>setLocal({...local, autoScanDay:Number(e.target.value)})}><option value={1}>Lunedì</option><option value={2}>Martedì</option><option value={3}>Mercoledì</option><option value={4}>Giovedì</option><option value={5}>Venerdì</option><option value={6}>Saturday</option><option value={0}>Sunday</option></select></div>)}
+          <div className="text-sm">Automatic targets (one per line)<textarea className="mt-1 h-28 w-full rounded border border-zinc-300 p-2" value={(local.autoScanTargets||[]).join("\n")} onChange={(e)=>setLocal({...local, autoScanTargets:e.target.value.split(/\n|;/).map(s=>s.trim()).filter(Boolean)})} /></div>
+          <button disabled={savingSettings} className="rounded-lg bg-[#20BBA3] px-4 py-2 text-sm font-medium text-black hover:bg-[#1aa892] disabled:opacity-60" onClick={()=>saveAppSettings(local)}>Save settings</button>
         </div>
       </div>
     );
@@ -302,21 +302,21 @@ export default function App() {
 
   const HistoryView = () => (
     <div className="h-full overflow-hidden flex flex-col">
-      <div className="flex items-center justify-between"><h2 className="text-lg font-semibold">Storico scansioni</h2><button className="rounded border border-zinc-300 px-2 py-1 text-xs hover:bg-zinc-100" onClick={async()=>{ const h=await window.uuprotect?.clearHistory(); setHistory(h||[]); }}>Svuota</button></div>
+      <div className="flex items-center justify-between"><h2 className="text-lg font-semibold">Scan history</h2><button className="rounded border border-zinc-300 px-2 py-1 text-xs hover:bg-zinc-100" onClick={async()=>{ const h=await window.uuprotect?.clearHistory(); setHistory(h||[]); }}>Clear</button></div>
       <div className="mt-2 flex-1 overflow-hidden">
         {history.length === 0 ? (
-          <div className="rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-3 text-xs text-zinc-500">Nessuna scansione nello storico.</div>
+          <div className="rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-3 text-xs text-zinc-500">No scans in history yet.</div>
         ) : (
           <div className="h-full overflow-hidden space-y-2 pr-1">
             {history.slice(0,12).map((h) => (
               <div key={h.id} className="rounded-lg border border-zinc-200 bg-zinc-50 p-2 text-xs">
-                <div className="flex justify-between gap-2"><span className="font-medium text-zinc-800">{h.type === 'fix' ? 'Risoluzione' : 'Scansione'}</span><span className="text-zinc-500">{new Date(h.date).toLocaleString()}</span></div>
+                <div className="flex justify-between gap-2"><span className="font-medium text-zinc-800">{h.type === 'fix' ? 'Remediation' : 'Scan'}</span><span className="text-zinc-500">{new Date(h.date).toLocaleString()}</span></div>
                 <div className="text-zinc-600 truncate" title={(h.targets||[]).join('; ')}>Target: {(h.targets||[]).join('; ')}</div>
-                <div className="text-zinc-700">Stato: {h.status}</div>
+                <div className="text-zinc-700">Status: {h.status}</div>
                 {h.summary && <div className="mt-1 grid grid-cols-3 gap-1">
-                  <div className="rounded bg-white border border-zinc-200 px-1.5 py-1">File: {h.summary.files ?? '-'}</div>
-                  <div className="rounded bg-white border border-zinc-200 px-1.5 py-1">Infetti: {h.summary.infected ?? '-'}</div>
-                  <div className="rounded bg-white border border-zinc-200 px-1.5 py-1">Tempo: {h.summary.time ?? '-'}</div>
+                  <div className="rounded bg-white border border-zinc-200 px-1.5 py-1">Files: {h.summary.files ?? '-'}</div>
+                  <div className="rounded bg-white border border-zinc-200 px-1.5 py-1">Infected: {h.summary.infected ?? '-'}</div>
+                  <div className="rounded bg-white border border-zinc-200 px-1.5 py-1">Time: {h.summary.time ?? '-'}</div>
                 </div>}
               </div>
             ))}
@@ -331,37 +331,37 @@ export default function App() {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 lg:grid-cols-[1fr_460px]">
         <div className={`relative flex h-[720px] w-full items-center justify-center overflow-hidden rounded-2xl border bg-[#FCE044] transition ${dragOver ? "border-[#20BBA3] ring-2 ring-[#20BBA3]/30" : "border-black/20"}`}
           onDragOver={onDragOver} onDragEnter={onDragOver} onDragLeave={onDragLeave} onDrop={onDrop}>
-          <div className="pointer-events-none absolute top-4 left-1/2 -translate-x-1/2 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs text-zinc-700 shadow-sm">Trascina file o cartelle sul cerchio per importarle</div>
+          <div className="pointer-events-none absolute top-4 left-1/2 -translate-x-1/2 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs text-zinc-700 shadow-sm">Drag files or folders onto the circle to import them</div>
           <div className="relative flex h-[560px] w-[560px] items-center justify-center">
-            <OrbitRotation icons={fileIcons} orbitCount={fileIcons.length > 10 ? 3 : 2} orbitGap={7} size="md" onCenterClick={startScan} centerDisabled={running} centerIcon={{ Icon: FaPlay, name: "Avvia" }} centerContent={<span className="flex h-full w-full items-center justify-center rounded-full bg-[#FCE044]/95 text-black"><FaPlay className="h-8 w-8 translate-x-[2px]" /></span>} className={running ? "opacity-90" : ""} />
+            <OrbitRotation icons={fileIcons} orbitCount={fileIcons.length > 10 ? 3 : 2} orbitGap={7} size="md" onCenterClick={startScan} centerDisabled={running} centerIcon={{ Icon: FaPlay, name: "Start" }} centerContent={<span className="flex h-full w-full items-center justify-center rounded-full bg-[#FCE044]/95 text-black"><FaPlay className="h-8 w-8 translate-x-[2px]" /></span>} className={running ? "opacity-90" : ""} />
           </div>
           <div className="absolute bottom-4 left-4 right-4 rounded-xl border border-zinc-200 bg-white p-3 shadow-sm">
-            <div className="mb-2 flex items-center justify-between gap-3 text-xs text-zinc-600"><span className="font-medium text-zinc-800">{running ? "Stato avanzamento" : "Pronto"}</span><span className="text-zinc-800">{Math.round(progress)}%</span></div>
+            <div className="mb-2 flex items-center justify-between gap-3 text-xs text-zinc-600"><span className="font-medium text-zinc-800">{running ? "Progress status" : "Pronto"}</span><span className="text-zinc-800">{Math.round(progress)}%</span></div>
             <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-200"><div className="h-full rounded-full bg-[#20BBA3] transition-all duration-300" style={{ width: `${Math.max(0, Math.min(100, progress))}%` }} /></div>
-            <div className="mt-2 min-h-[20px] text-xs text-[#20BBA3] truncate" title={statusText}>{running ? statusText : "Sistema in attesa. Seleziona un target e avvia la scansione."}</div>
+            <div className="mt-2 min-h-[20px] text-xs text-[#20BBA3] truncate" title={statusText}>{running ? statusText : "System idle. Select a target and start the scan."}</div>
           </div>
-          {dragOver && (<div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[#20BBA3]/10 text-[#20BBA3] font-medium">Rilascia per importare e preparare la scansione</div>)}
+          {dragOver && (<div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[#20BBA3]/10 text-[#20BBA3] font-medium">Drop to import and prepare the scan</div>)}
         </div>
 
         <div className="flex h-[720px] flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white p-4 text-zinc-900">
           <img src="./logo-full.png" alt="UUPROTECT" className="h-8 w-auto max-w-[220px] object-contain" />
           <div className="mt-2 flex gap-2">
             {(['scan','history','settings'] as const).map((v) => (
-              <button key={v} onClick={()=>setView(v)} className={`rounded-lg px-3 py-1.5 text-xs font-medium ${view===v ? 'bg-[#20BBA3] text-black' : 'border border-zinc-300 text-zinc-700 hover:bg-zinc-100'}`}>{v==='scan'?'Scansione':v==='history'?'Storico':'Impostazioni'}</button>
+              <button key={v} onClick={()=>setView(v)} className={`rounded-lg px-3 py-1.5 text-xs font-medium ${view===v ? 'bg-[#20BBA3] text-black' : 'border border-zinc-300 text-zinc-700 hover:bg-zinc-100'}`}>{v==='scan'?'Scan':v==='history'?'Storico':'Settings'}</button>
             ))}
           </div>
 
           {view === 'scan' && (
             <div className="mt-3 min-h-0 flex-1 overflow-hidden flex flex-col">
-              <p className="text-sm text-zinc-600">Scansioni predefinite e drag &amp; drop sul cerchio.</p>
-              <div className="mt-2"><div className="mb-2 text-sm font-medium text-zinc-700">Scansioni predefinite</div><div className="grid grid-cols-2 gap-2">{PRESETS.map((p) => (<button key={p.id} onClick={() => applyPreset(p)} disabled={running} className="rounded-lg border border-[#20BBA3] bg-[#20BBA3] px-2 py-2 text-left text-xs font-medium text-black hover:bg-[#1aa892] disabled:opacity-60">{p.label}</button>))}</div></div>
-              <div className="mt-2 text-sm text-zinc-600">Stato: <span className="font-medium text-zinc-900">{status}</span></div>
+              <p className="text-sm text-zinc-600">Preset scans and drag &amp; drop onto the circle.</p>
+              <div className="mt-2"><div className="mb-2 text-sm font-medium text-zinc-700">Preset scans</div><div className="grid grid-cols-2 gap-2">{PRESETS.map((p) => (<button key={p.id} onClick={() => applyPreset(p)} disabled={running} className="rounded-lg border border-[#20BBA3] bg-[#20BBA3] px-2 py-2 text-left text-xs font-medium text-black hover:bg-[#1aa892] disabled:opacity-60">{p.label}</button>))}</div></div>
+              <div className="mt-2 text-sm text-zinc-600">Status: <span className="font-medium text-zinc-900">{status}</span></div>
               <div className="mt-3 min-h-0 flex-1 overflow-hidden flex flex-col">
-                <div className="mb-2 text-sm font-medium text-zinc-800">Riepilogo con indicatori</div>
-                {summary ? (<div className="grid grid-cols-3 gap-2"><Indicator label="Cartelle" value={summary.folders ?? "-"} /><Indicator label="File" value={summary.files ?? "-"} /><Indicator label="Pacchetti" value={summary.packed ?? "-"} /><Indicator label="Infetti" value={summary.infected ?? "-"} tone={infectedTone as any} /><Indicator label="Sospetti" value={summary.suspect ?? "-"} tone={suspectTone as any} /><Indicator label="Warning" value={summary.warnings ?? "-"} tone={warningTone as any} /><Indicator label="Virus ID" value={summary.identified ?? "-"} tone={(summary.identified && summary.identified !== "0") ? "bad" : "good"} /><Indicator label="Errori I/O" value={summary.io ?? "-"} tone={(summary.io && summary.io !== "0") ? "warn" : "good"} /><Indicator label="Tempo" value={summary.time ?? "-"} /></div>) : (<div className="rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-3 text-xs text-zinc-500">Nessun riepilogo disponibile. Avvia una scansione per vedere gli indicatori.</div>)}
-                <div className="mt-3 mb-1 text-sm font-medium text-zinc-800">Dettaglio output</div>
+                <div className="mb-2 text-sm font-medium text-zinc-800">Summary indicators</div>
+                {summary ? (<div className="grid grid-cols-3 gap-2"><Indicator label="Folders" value={summary.folders ?? "-"} /><Indicator label="File" value={summary.files ?? "-"} /><Indicator label="Packed" value={summary.packed ?? "-"} /><Indicator label="Infected" value={summary.infected ?? "-"} tone={infectedTone as any} /><Indicator label="Suspect" value={summary.suspect ?? "-"} tone={suspectTone as any} /><Indicator label="Warning" value={summary.warnings ?? "-"} tone={warningTone as any} /><Indicator label="Virus ID" value={summary.identified ?? "-"} tone={(summary.identified && summary.identified !== "0") ? "bad" : "good"} /><Indicator label="I/O Errors" value={summary.io ?? "-"} tone={(summary.io && summary.io !== "0") ? "warn" : "good"} /><Indicator label="Tempo" value={summary.time ?? "-"} /></div>) : (<div className="rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-3 text-xs text-zinc-500">No summary available yet. Start a scan to see indicators.</div>)}
+                <div className="mt-3 mb-1 text-sm font-medium text-zinc-800">Output details</div>
                 <pre className="min-h-0 flex-1 overflow-hidden border border-[#808080] bg-black p-2 text-[11px] leading-snug text-[#c0c0c0] whitespace-pre-wrap break-words font-[Consolas,'Lucida_Console','Courier_New',monospace]">{output}</pre>
-                <button onClick={() => setShowFixModal(true)} disabled={running || !targets.length} className="mt-3 w-full rounded-lg bg-[#20BBA3] px-3 py-2 text-sm font-medium text-black transition hover:bg-[#1aa892] disabled:opacity-50 disabled:cursor-not-allowed" title="Risolvi eventuali problemi rilevati">Risolvi problemi rilevati</button>
+                <button onClick={() => setShowFixModal(true)} disabled={running || !targets.length} className="mt-3 w-full rounded-lg bg-[#20BBA3] px-3 py-2 text-sm font-medium text-black transition hover:bg-[#1aa892] disabled:opacity-50 disabled:cursor-not-allowed" title="Resolve detected issues">Resolve detected issues</button>
               </div>
             </div>
           )}
@@ -373,18 +373,18 @@ export default function App() {
       {showFixModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
           <div className="w-full max-w-lg rounded-2xl border border-border bg-zinc-950 p-5 shadow-2xl">
-            <h3 className="text-lg font-semibold text-white">Conferma risoluzione problemi</h3>
+            <h3 className="text-lg font-semibold text-white">Confirm issue remediation</h3>
             <p className="mt-2 text-sm text-zinc-300">Il sistema tenterà di risolvere i problemi rilevati eseguendo una nuova analisi con opzione di disinfezione (<code>-d</code>) sui target selezionati:</p>
             <ul className="mt-2 list-disc pl-5 text-sm text-zinc-400 space-y-1">
               <li>verrà avviato UUPROTECT sui percorsi: <span className="text-zinc-200 break-all">{targets.join("; ")}</span></li>
-              <li>i file infetti rilevati potranno essere <span className="text-zinc-200">disinfettati</span> quando supportato dal motore/firme</li>
-              <li>la scansione mostrerà un nuovo output e riepilogo con gli esiti dell’operazione</li>
-              {!hasProblems && <li className="text-amber-300">Attualmente non risultano problemi nel riepilogo; l’operazione eseguirà comunque una scansione con tentativo di disinfezione.</li>}
+              <li>detected infected files may be <span className="text-zinc-200">disinfected</span> when supported by the engine/signatures</li>
+              <li>the scan will show new output and a summary with the operation results</li>
+              {!hasProblems && <li className="text-amber-300">No issues are currently shown in the summary; the operation will still run a scan with a disinfection attempt.</li>}
             </ul>
-            <p className="mt-3 text-sm text-zinc-300">Vuoi procedere?</p>
+            <p className="mt-3 text-sm text-zinc-300">Do you want to proceed?</p>
             <div className="mt-4 flex justify-end gap-2">
-              <button onClick={() => setShowFixModal(false)} className="rounded-lg border border-border px-4 py-2 text-sm text-zinc-200 hover:bg-zinc-800">Annulla</button>
-              <button onClick={confirmFix} className="rounded-lg bg-[#20BBA3] px-4 py-2 text-sm font-medium text-black hover:bg-[#1aa892]">Conferma</button>
+              <button onClick={() => setShowFixModal(false)} className="rounded-lg border border-border px-4 py-2 text-sm text-zinc-200 hover:bg-zinc-800">Cancel</button>
+              <button onClick={confirmFix} className="rounded-lg bg-[#20BBA3] px-4 py-2 text-sm font-medium text-black hover:bg-[#1aa892]">Confirm</button>
             </div>
           </div>
         </div>

@@ -1,13 +1,13 @@
 ﻿# Contributing to UUPROTECT
 
-Grazie per l'interesse nel contribuire a **UUPROTECT**.
+Thank you for your interest in contributing to **UUPROTECT**.
 
-## Come contribuire
-- **Segnalazione bug:** apri una issue con descrizione chiara, passi per riprodurre, comportamento atteso/ottenuto, sistema operativo e versione.
-- **Richieste di funzionalità:** descrivi il caso d'uso, il beneficio e, se possibile, una proposta di implementazione.
-- **Pull request:** proponi modifiche focalizzate, con descrizione del problema risolto e impatto.
+## How to Contribute
+- **Bug reports:** Open an issue with a clear description, steps to reproduce, expected vs actual behavior, operating system, and version.
+- **Feature requests:** Describe the use case, benefits, and, if possible, an implementation proposal.
+- **Pull requests:** Submit focused changes with a description of the problem solved and the impact.
 
-## Setup di sviluppo
+## Development Setup
 ### Engine / CLI (Python)
 ```bash
 python -m venv .venv
@@ -16,23 +16,23 @@ python -m venv .venv
 pip install -e .[dev]
 ```
 
-### Interfaccia desktop (Electron UI)
+### Desktop UI (Electron)
 ```bash
 cd electron-ui
 npm install
 npm run build
 ```
 
-## Linee guida
-- Mantieni le modifiche **coerenti** con lo stile e la struttura esistente.
-- Aggiorna la documentazione (`README.md`, `CHANGELOG.md`, ecc.) quando modifichi comportamento o funzionalità visibili.
-- Evita commit con file generati non necessari, credenziali, o dati locali.
-- Per modifiche rilevanti alla sicurezza, consulta anche [SECURITY.md](SECURITY.md).
+## Guidelines
+- Keep changes **consistent** with the existing style and structure.
+- Update documentation (`README.md`, `CHANGELOG.md`, etc.) when you change visible behavior or features.
+- Avoid committing unnecessary generated files, credentials, or local data.
+- For security-related changes, also review [SECURITY.md](SECURITY.md).
 
-## Verifiche consigliate prima di una PR
-- Verifica che l'app/CLI si avvii correttamente.
-- Esegui test/lint disponibili nel progetto quando applicabile.
-- Controlla che non siano inclusi artefatti locali (`.venv`, `node_modules`, log, file temporanei).
+## Recommended Checks Before a PR
+- Verify that the app/CLI starts correctly.
+- Run available tests/linting in the project when applicable.
+- Ensure no local artifacts are included (`.venv`, `node_modules`, logs, temporary files).
 
-## Licenza dei contributi
-Contribuendo a questo repository, accetti che i tuoi contributi siano distribuiti secondo la licenza del progetto ([MIT - OBS DESIGN](LICENSE)).
+## Contributor License
+By contributing to this repository, you agree that your contributions will be distributed under the project license ([MIT - OBS DESIGN](LICENSE)).

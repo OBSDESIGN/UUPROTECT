@@ -1,24 +1,24 @@
 ﻿# Security Policy
 
 ## Supported Versions
-UUPROTECT è in sviluppo attivo. Le correzioni di sicurezza vengono applicate principalmente sulla versione più recente del branch principale (`main`).
+UUPROTECT is under active development. Security fixes are primarily applied to the latest version on the main branch (`main`).
 
-| Versione / Branch | Supporto sicurezza |
+| Version / Branch | Security Support |
 | --- | --- |
-| `main` (latest) | ✅ Supportato |
-| Versioni precedenti / fork non aggiornati | ⚠️ Best effort |
+| `main` (latest) | ✅ Supported |
+| Older versions / unmaintained forks | ⚠️ Best effort |
 
-## Segnalazione di vulnerabilità
-Se scopri una vulnerabilità di sicurezza:
-1. **Non pubblicare** immediatamente dettagli sfruttabili in issue pubbliche.
-2. Contatta il maintainer/proprietario del repository tramite i canali disponibili su GitHub (issue privata se disponibile, oppure contatto diretto del maintainer).
-3. Includi, se possibile:
-   - descrizione del problema e impatto
-   - passi per riprodurre (PoC sicuro)
-   - versione/commit interessato
-   - eventuali mitigazioni suggerite
+## Reporting a Vulnerability
+If you discover a security vulnerability:
+1. **Do not** immediately publish exploitable details in public issues.
+2. Contact the repository maintainer/owner through available GitHub channels (private reporting if available, or direct maintainer contact).
+3. Include, if possible:
+   - description of the issue and impact
+   - steps to reproduce (safe PoC)
+   - affected version/commit
+   - suggested mitigations (if any)
 
-## Ambito e note
-- UUPROTECT include componenti di scansione, UI desktop, CLI e funzionalità pianificate: valuta attentamente permessi, percorsi scansionati e azioni di rimedio/disinfezione.
-- Nessun software antivirus può garantire rilevamento completo o assenza di falsi positivi/negativi.
-- Esegui sempre backup dei dati importanti prima di operazioni di pulizia/rimozione automatica.
+## Scope and Notes
+- UUPROTECT includes scanning components, a desktop UI, CLI, and scheduled features: carefully evaluate permissions, scanned paths, and remediation/disinfection actions.
+- No antivirus software can guarantee complete detection or the absence of false positives/negatives.
+- Always keep backups of important data before automated cleanup/removal operations.
