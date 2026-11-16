@@ -108,8 +108,8 @@ export function OrbitRotation({
             sizeClasses[size],
             onCenterClick && "cursor-pointer transition hover:scale-[1.03] hover:bg-[#20BBA3]/20 disabled:cursor-progress disabled:opacity-70"
           )}
-          aria-label={onCenterClick ? "Avvia scansione" : centerIcon?.name}
-          title={onCenterClick ? "Avvia scansione" : centerIcon?.name}
+          aria-label={onCenterClick ? "Start scan" : centerIcon?.name}
+          title={onCenterClick ? "Start scan" : centerIcon?.name}
         >
           {centerContent ?? <centerIcon.Icon className={cn(iconSizeClasses[size])} />}
         </CenterTag>

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+﻿# -*- coding:utf-8 -*-
 
 """
 Dummy Scan Engine Plugin
@@ -33,7 +33,7 @@ class KavMain(MalwareDetectorBase):
     """
 
     # Dummy pattern to detect
-    DUMMY_PATTERN = b"Dummy Engine test file - KICOM Anti-Virus Project"
+    DUMMY_PATTERN = b"Dummy Engine test file - UUPROTECT Project"
     DUMMY_VIRUS_NAME = "Dummy-Test-File (not a virus)"
 
     def __init__(self):

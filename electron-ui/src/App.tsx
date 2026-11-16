@@ -267,7 +267,7 @@ export default function App() {
               <div className="font-medium">Automatic scan targets</div>
               <p className="mt-1 text-xs text-zinc-500">One path per line</p>
               <textarea className="mt-2 h-36 w-full rounded border border-zinc-300 p-2 text-sm" value={local.autoScanTargets.join("\n")} onChange={(e)=>setLocal({...local, autoScanTargets:e.target.value.split(/\n|;/).map(s=>s.trim()).filter(Boolean)})} />
-              <div className="mt-2 text-xs text-zinc-500">Se abilitate, verrà creata/aggiornata un’attività pianificata di Windows per eseguire UUPROTECT in background sul PC completo, inclusi file ZIP e archivi.</div>
+              <div className="mt-2 text-xs text-zinc-500">If enabled, a Windows scheduled task will be created/updated to run UUPROTECT in the background for full PC scans, including ZIP files and archives.</div>
             </div>
           </div>
           <div className="mt-5 flex justify-end gap-2">
@@ -336,7 +336,7 @@ export default function App() {
             <OrbitRotation icons={fileIcons} orbitCount={fileIcons.length > 10 ? 3 : 2} orbitGap={7} size="md" onCenterClick={startScan} centerDisabled={running} centerIcon={{ Icon: FaPlay, name: "Start" }} centerContent={<span className="flex h-full w-full items-center justify-center rounded-full bg-[#FCE044]/95 text-black"><FaPlay className="h-8 w-8 translate-x-[2px]" /></span>} className={running ? "opacity-90" : ""} />
           </div>
           <div className="absolute bottom-4 left-4 right-4 rounded-xl border border-zinc-200 bg-white p-3 shadow-sm">
-            <div className="mb-2 flex items-center justify-between gap-3 text-xs text-zinc-600"><span className="font-medium text-zinc-800">{running ? "Progress status" : "Pronto"}</span><span className="text-zinc-800">{Math.round(progress)}%</span></div>
+            <div className="mb-2 flex items-center justify-between gap-3 text-xs text-zinc-600"><span className="font-medium text-zinc-800">{running ? "Progress status" : "Ready"}</span><span className="text-zinc-800">{Math.round(progress)}%</span></div>
             <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-200"><div className="h-full rounded-full bg-[#20BBA3] transition-all duration-300" style={{ width: `${Math.max(0, Math.min(100, progress))}%` }} /></div>
             <div className="mt-2 min-h-[20px] text-xs text-[#20BBA3] truncate" title={statusText}>{running ? statusText : "System idle. Select a target and start the scan."}</div>
           </div>
@@ -347,7 +347,7 @@ export default function App() {
           <img src="./logo-full.png" alt="UUPROTECT" className="h-8 w-auto max-w-[220px] object-contain" />
           <div className="mt-2 flex gap-2">
             {(['scan','history','settings'] as const).map((v) => (
-              <button key={v} onClick={()=>setView(v)} className={`rounded-lg px-3 py-1.5 text-xs font-medium ${view===v ? 'bg-[#20BBA3] text-black' : 'border border-zinc-300 text-zinc-700 hover:bg-zinc-100'}`}>{v==='scan'?'Scan':v==='history'?'Storico':'Settings'}</button>
+              <button key={v} onClick={()=>setView(v)} className={`rounded-lg px-3 py-1.5 text-xs font-medium ${view===v ? 'bg-[#20BBA3] text-black' : 'border border-zinc-300 text-zinc-700 hover:bg-zinc-100'}`}>{v==='scan'?'Scan':v==='history'?'History':'Settings'}</button>
             ))}
           </div>
 
@@ -358,7 +358,7 @@ export default function App() {
               <div className="mt-2 text-sm text-zinc-600">Status: <span className="font-medium text-zinc-900">{status}</span></div>
               <div className="mt-3 min-h-0 flex-1 overflow-hidden flex flex-col">
                 <div className="mb-2 text-sm font-medium text-zinc-800">Summary indicators</div>
-                {summary ? (<div className="grid grid-cols-3 gap-2"><Indicator label="Folders" value={summary.folders ?? "-"} /><Indicator label="File" value={summary.files ?? "-"} /><Indicator label="Packed" value={summary.packed ?? "-"} /><Indicator label="Infected" value={summary.infected ?? "-"} tone={infectedTone as any} /><Indicator label="Suspect" value={summary.suspect ?? "-"} tone={suspectTone as any} /><Indicator label="Warning" value={summary.warnings ?? "-"} tone={warningTone as any} /><Indicator label="Virus ID" value={summary.identified ?? "-"} tone={(summary.identified && summary.identified !== "0") ? "bad" : "good"} /><Indicator label="I/O Errors" value={summary.io ?? "-"} tone={(summary.io && summary.io !== "0") ? "warn" : "good"} /><Indicator label="Tempo" value={summary.time ?? "-"} /></div>) : (<div className="rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-3 text-xs text-zinc-500">No summary available yet. Start a scan to see indicators.</div>)}
+                {summary ? (<div className="grid grid-cols-3 gap-2"><Indicator label="Folders" value={summary.folders ?? "-"} /><Indicator label="Files" value={summary.files ?? "-"} /><Indicator label="Packed" value={summary.packed ?? "-"} /><Indicator label="Infected" value={summary.infected ?? "-"} tone={infectedTone as any} /><Indicator label="Suspect" value={summary.suspect ?? "-"} tone={suspectTone as any} /><Indicator label="Warnings" value={summary.warnings ?? "-"} tone={warningTone as any} /><Indicator label="Virus ID" value={summary.identified ?? "-"} tone={(summary.identified && summary.identified !== "0") ? "bad" : "good"} /><Indicator label="I/O Errors" value={summary.io ?? "-"} tone={(summary.io && summary.io !== "0") ? "warn" : "good"} /><Indicator label="Time" value={summary.time ?? "-"} /></div>) : (<div className="rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-3 text-xs text-zinc-500">No summary available yet. Start a scan to see indicators.</div>)}
                 <div className="mt-3 mb-1 text-sm font-medium text-zinc-800">Output details</div>
                 <pre className="min-h-0 flex-1 overflow-hidden border border-[#808080] bg-black p-2 text-[11px] leading-snug text-[#c0c0c0] whitespace-pre-wrap break-words font-[Consolas,'Lucida_Console','Courier_New',monospace]">{output}</pre>
                 <button onClick={() => setShowFixModal(true)} disabled={running || !targets.length} className="mt-3 w-full rounded-lg bg-[#20BBA3] px-3 py-2 text-sm font-medium text-black transition hover:bg-[#1aa892] disabled:opacity-50 disabled:cursor-not-allowed" title="Resolve detected issues">Resolve detected issues</button>
@@ -374,9 +374,9 @@ export default function App() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
           <div className="w-full max-w-lg rounded-2xl border border-border bg-zinc-950 p-5 shadow-2xl">
             <h3 className="text-lg font-semibold text-white">Confirm issue remediation</h3>
-            <p className="mt-2 text-sm text-zinc-300">Il sistema tenterà di risolvere i problemi rilevati eseguendo una nuova analisi con opzione di disinfezione (<code>-d</code>) sui target selezionati:</p>
+            <p className="mt-2 text-sm text-zinc-300">The system will attempt to resolve detected issues by running a new analysis with the disinfection option (<code>-d</code>) on the selected targets:</p>
             <ul className="mt-2 list-disc pl-5 text-sm text-zinc-400 space-y-1">
-              <li>verrà avviato UUPROTECT sui percorsi: <span className="text-zinc-200 break-all">{targets.join("; ")}</span></li>
+              <li>UUPROTECT will run on: <span className="text-zinc-200 break-all">{targets.join("; ")}</span></li>
               <li>detected infected files may be <span className="text-zinc-200">disinfected</span> when supported by the engine/signatures</li>
               <li>the scan will show new output and a summary with the operation results</li>
               {!hasProblems && <li className="text-amber-300">No issues are currently shown in the summary; the operation will still run a scan with a disinfection attempt.</li>}

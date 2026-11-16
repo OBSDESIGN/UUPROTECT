@@ -1,4 +1,4 @@
-﻿# UUPROTECT
+# UUPROTECT
 
 <p align="center">
   <img src="assets/uuprotect-logo.png" alt="UUPROTECT - Open source antivirus for Windows, desktop and CLI" width="220" />
@@ -16,12 +16,12 @@
 
 ## Author & Credits
 - **Project:** UUPROTECT
-- **Creator:** **Omar Ben Sabyh**
-- **License & Ownership:** **OBS DESIGN**
+- **Creator:** **Omar Ben Sabyh** (created by Omar Ben Sabyh)
+- **Ownership & License:** **OBS DESIGN**
 - **Instagram:** If you'd like to follow me, find me on Instagram at [@omar_ammor78](https://www.instagram.com/omar_ammor78/)
 
 ## Overview
-UUPROTECT is a cybersecurity project that combines a **Python antivirus engine**, **command-line tools**, and a **desktop graphical interface** to scan files, folders, and archives (including ZIP and other supported formats), with result summaries, history, settings, and scheduled automatic scans.
+UUPROTECT is a cybersecurity project created by **Omar Ben Sabyh (OBS DESIGN)**. It combines a **Python antivirus engine**, **command-line tools**, and a **desktop graphical interface** to scan files, folders, and archives (including ZIP and other supported formats), with result summaries, history, settings, and scheduled automatic scans.
 
 Keywords: open source antivirus, malware scanner, virus scanner, desktop antivirus, Electron app, Python antivirus engine, ZIP archive scanning, Windows security, CLI antivirus, antivirus daemon.
 
@@ -39,7 +39,7 @@ Keywords: open source antivirus, malware scanner, virus scanner, desktop antivir
 - **`uuprotect/`**: scanning engine, plugins, core, CLI, and daemon
 - **`electron-ui/`**: desktop application (React, Vite, Electron, TypeScript, Tailwind)
 - **`Tools/`**: utilities for signatures/rules and support tools
-- **Launch scripts:** `Avvia UUPROTECT.bat`, `Avvia-UUPROTECT.bat`
+- **Launch scripts:** `Start-UUPROTECT.bat`, `Start-UUPROTECT-Alt.bat`
 
 ## Requirements
 - **Windows** (primary support for UI and automatic scheduling)
@@ -69,7 +69,7 @@ pip install -e .[dev]
 
 ## Usage
 ### Desktop UI (Windows)
-- Double-click `Avvia UUPROTECT.bat`
+- Double-click `Start-UUPROTECT.bat`
 - Or run `\.venv\Scripts\uuprotect.exe` (alias: `k2.exe`)
 
 ### CLI
@@ -129,4 +129,4 @@ This repository is optimized for discoverability with clear descriptions, releva
 - keep README, changelog, and issue templates up to date
 
 ## License
-This project is distributed under the **MIT License** owned by **OBS DESIGN**. See the [LICENSE](LICENSE) file for the full text.
+This project is distributed under the **MIT License** owned by **OBS DESIGN**. Created by **Omar Ben Sabyh**. See the [LICENSE](LICENSE) file for the full text.

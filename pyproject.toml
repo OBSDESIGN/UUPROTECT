@@ -1,4 +1,4 @@
-[build-system]
+﻿[build-system]
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
@@ -89,7 +89,7 @@ where = ["."]
 include = ["uuprotect*"]
 
 [tool.setuptools.package-data]
-"uuprotect.plugins" = ["*.py", "kicom.lst"]
+"uuprotect.plugins" = ["*.py", "uuprotect.lst"]
 "uuprotect.kavcore" = ["*.py"]
 "uuprotect.daemon" = ["*.py"]
 

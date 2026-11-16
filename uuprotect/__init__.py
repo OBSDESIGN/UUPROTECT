@@ -1,5 +1,5 @@
-# -*- coding:utf-8 -*-
-# KICOM Anti-Virus II Engine
+﻿# -*- coding:utf-8 -*-
+# UUPROTECT Antivirus Engine
 
 """
 uuprotect - Open Source Antivirus Engine

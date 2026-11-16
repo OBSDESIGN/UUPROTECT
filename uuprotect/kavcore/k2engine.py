@@ -115,14 +115,14 @@ class Engine:
         # Save the plugin path
         self.plugins_path = plugins_path
 
-        # Get the plugin list from kicom.lst
-        ret = self.__get_plugin_list(os.path.join(plugins_path, "kicom.lst"))
+        # Get the plugin list from uuprotect.lst
+        ret = self.__get_plugin_list(os.path.join(plugins_path, "uuprotect.lst"))
 
         if not ret:  # No plugin files to load
             return False
 
         if self.verbose:
-            logger.debug("[*] kicom.lst :")
+            logger.debug("[*] uuprotect.lst :")
             logger.debug("   %s", self.kmdfiles)
 
         # Load plugin files in priority order
@@ -275,7 +275,7 @@ class Engine:
     # ---------------------------------------------------------------------
     # __get_plugin_list(self, plugin_list_file)
     # Get the loading priority of the plugin engine
-    # Argument: plugin_list_file - Full path of the kicom.lst file
+    # Argument: plugin_list_file - Full path of the uuprotect.lst file
     # Return: Success or not
     # ---------------------------------------------------------------------
     def __get_plugin_list(self, plugin_list_file: str) -> bool:

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+﻿# -*- coding:utf-8 -*-
 
 
 # -------------------------------------------------------------------------
@@ -545,7 +545,7 @@ def update_signatures():
 
 # -------------------------------------------------------------------------
 # update_uuprotect()
-# Updates Kicom Antivirus to the latest version
+# Updates UUPROTECT to the latest version
 # Two-phase update: (1) Package update check, (2) Signature update
 # -------------------------------------------------------------------------
 def update_uuprotect(path):
@@ -1265,7 +1265,7 @@ def main():
             else:
                 subprocess.Popen([npm_cmd, "start"], cwd=electron_dir)
         except Exception as e:
-            print_error(f"Impossibile avviare l'interfaccia Electron: {e}")
+            print_error(f"Unable to start the Electron interface: {e}")
         return 0
 
     # Allow `--no-gui` to be passed without breaking option parsing.
